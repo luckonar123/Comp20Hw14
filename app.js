@@ -8,3 +8,15 @@ http.createServer(function (req,res) {
 
     res.end();
 }).listen(port);
+
+
+app.use(express.urlencoded());
+
+app.use(express.json());
+
+app.post('/', function(request, response){
+    console.log(request.body.ticker);
+    console.log(request.body.button);
+});
+
+res.write(body.ticker);
