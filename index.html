@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
     <meta charset="utf-8">
-    <title>HW 14 Pt. 2</title>
+    <title>Comp20 HW14</title>
   </head>
-  
+
   <body>
     <h1> Stocker Ticker</h1>
-    <h2> Enter either a company name or ticker and well show you the corresponding ticker or company</h2>
+    <h2>Enter EITHER a company name OR a company ticker</h2>
     
-    <form action="https://hw14cs20.herokuapp.com" method="post">
-        <input type="radio" id="Company" value="Company"  name="type" required><label for='Company' class="light" >Company</label><br/>
-        <input type="radio" id="Ticker" value="Ticker" name="type"><label for="Ticker" class="light">Ticker</label>
-        <br> Enter a company ticker or name here
-        <input type="text" name="ticker" id="ticker">
-        <br>
-        <br>
-        <button type="submit" name="button" id ="btn1">Find Matches</button>
+    <form action="http://127.0.0.1:8080/" method="post">
+      Enter a name
+      <input type="text" name="company">
+      <br>
+      OR
+      <br>
+      Enter a ticker
+      <input type="text" name="ticker">
+      <br>
+      <br>
+      <button type="submit" name="button" id ="btn1">Submit</button>
     </form>
     
     
