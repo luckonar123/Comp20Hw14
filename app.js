@@ -17,7 +17,7 @@ MongoClient.connect(url, function(err, db) {
   var query = {};
   dbo.collection("companies").find(query).toArray(function(err, result) {
     if (err) throw err;
-    // console.log(result);
+    console.log(result);
     for (i = 0; i < result.length; i++) {
       companiesToTickers[result[i].Company] = result[i].Ticker;
       if (tickersToCompanies[result[i].Ticker] == undefined) {
@@ -31,6 +31,18 @@ MongoClient.connect(url, function(err, db) {
     db.close();
   });
 });
+
+
+
+connect to heroku
+var http = require('http');
+var port = process.env.PORT || 3000;
+http.createServer(function(req, res){
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write("hello");
+  res.end();
+}).listen(port);
+
 
 var express = require('express');
 var app = express();
@@ -56,17 +68,17 @@ app.post('/',function(req,res){
     //get ticker name
     if(companyInput == ""){
       companyResult = tickersToCompanies[tickerInput];
-      // res.json({callback: companyResult});
+      res.json({callback: companyResult});
       res.send(companyResult)
-      // res.sendFile('index.html', {root : __dirname});
+      res.sendFile('index.html', {root : __dirname});
       return;
     }
     //get company name
     if(tickerInput == ""){
       tickerResult = companiesToTickers[companyInput];
-      // res.json({callback: companyResult});
+      res.json({callback: companyResult});
       res.send(tickerResult)
-      // res.sendFile('index.html', {root : __dirname});
+      res.sendFile('index.html', {root : __dirname});
       return;
     }
 });
