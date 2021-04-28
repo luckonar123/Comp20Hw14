@@ -1,3 +1,14 @@
+const MongoClient = require('mongodb').MongoClient;
+const url = "mongodb+srv://luckonar:Luckonar123@cluster0.7agxc.mongodb.net/Hw14?retryWrites=true&w=majority";
+MongoClient.connect(url,function(err, db){
+  if(err){return console.log(err); return;}
+  var dbo = db.db("Hw14");
+  var collection = dbo.collection('companies');
+  db.close();
+});
+
+
+
 var http = require('http');
 var port = process.env.PORT || 3000;
 http.createServer(function (req,res) {
@@ -6,13 +17,3 @@ http.createServer(function (req,res) {
 
     res.end();
 }).listen(port);
-
-const MongoClient = require('mongodb').MongoClient;
-const url = "mongodb+srv://luckonar:Luckonar123@cluster0.7agxc.mongodb.net/Hw14?retryWrites=true&w=majority";
-
-MongoClient.connect(url,function(err, db){
-  if(err){return console.log(err); return;}
-  var dbo = db.db("Hw14");
-  var collection = dbo.collection('companies');
-  db.close();
-});
