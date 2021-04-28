@@ -7,6 +7,7 @@ const mgurl = "mongodb+srv://luckonar:Luckonar123@cluster0.7agxc.mongodb.net/Hw1
 http.createServer(function(req, res) {
     res.writeHead(200, { 'Content-Type': 'text/html'});
     var qobj = url.parse(req.url, true).query;
+    var type = qobj.type; // assume x is querystring parameter
     var input = qobj.input;
     var query = new Object();
     query[type] = input;
