@@ -22,7 +22,7 @@ const server = http.createServer((req, res) => {
     var contentType = getContType(filePath);
     // console.log(contentType);
 
-    if (req.url == '/result') {
+    if (req.url == '') {
         res.writeHead(200, {'Content-Type': 'text/html'}); 
         // res.write ("Process the POST request<br>"); 
         pdata = ""; 
