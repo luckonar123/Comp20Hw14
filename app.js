@@ -7,16 +7,16 @@ http.createServer(function(req, res) {
     var qobj = url.parse(req.url, true).query;
     var type = qobj.type; // assume x is querystring parameter
     var input = qobj.input;
-    var query = new Object();
-    query[type] = input;
+    //var query = new Object();
+    //query[type] = input;
     res.write("<h1>Stock Ticker App</h1>");
-    res.write("<h3>" + type + ": " + input + "</h3>");
+    //res.write("<h3>" + type + ": " + input + "</h3>");
 
     res.write("<h3> result" + ": " + " </h3>");
 
-    find(type, input, query).then(result => {
-        console.log(result);
-        res.end( result  );
-    });
+//    find(type, input, query).then(result => {
+//        console.log(result);
+//        res.end( result  );
+//    });
 
 }).listen(port);
