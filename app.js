@@ -69,13 +69,15 @@ app.post('/',function(req,res){
       // res.sendFile('index.html', {root : __dirname});
       return;
     }
-    
 });
 
-var http = require('http');
-var port = process.env.PORT || 3000;
-http.createServer(function(req, res){
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write("hello");
-  res.end();
-}).listen(port);
+const server = http.createServer((req, res) => {
+    // create filepath for any page
+    var filePath = path.join(
+        __dirname,
+        'public',
+        req.url === '/' ? 'index.html' : req.url
+    );
+
+const port = process.env.PORT || 8080;
+server.listen(port, () => console.log(`Server running on port ${port}`));
