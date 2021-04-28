@@ -12,7 +12,7 @@ http.createServer(function(req, res) {
     //var query = new Object();
     //query[type] = input;
     res.write("<h1>Stock Ticker App</h1>");
-    //res.write("<h3>" + type + ": " + input + "</h3>");
+    res.write("<h3>" + type + ": " + input + "</h3>");
 
     res.write("<h3> result" + ": " + " </h3>");
 
