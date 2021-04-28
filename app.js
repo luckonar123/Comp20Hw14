@@ -1,24 +1,19 @@
+
 var http = require('http');
 var url = require('url');
-var port = process.env.PORT || 3000;
-const mgurl = "mongodb+srv://luckonar:Luckonar123@cluster0.7agxc.mongodb.net/Hw14?retryWrites=true&w=majority";
+var path = require('path');
+var fs = require('fs');
+var qs = require('querystring');
+const MongoClient = require('mongodb').MongoClient;
+
+// connection string
+const mongoUrl = "mongodb+srv://amybui:dbUser2014@cluster0.u3iji.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 
-http.createServer(function(req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/html'});
-    var qobj = url.parse(req.url, true).query;
-    var type = qobj.type;
-    var input = qobj.input;
-    //var query = new Object();
-    //query[type] = input;
-    res.write("<h1>Stock Ticker App</h1>");
-    res.write("<h3>" + type + ": " + input + "</h3>");
-
-    res.write("<h3> result" + ": " + " </h3>");
-
-   // find(type, input, query).then(result => {
-   //     console.log(result);
-   //     res.end( result  );
-   // });
-
-}).listen(port);
+const server = http.createServer((req, res) => {
+    // create filepath for any page
+    var filePath = path.join(
+        __dirname,
+        'public',
+        req.url === '/' ? 'index.html' : req.url
+    );
