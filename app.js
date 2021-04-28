@@ -23,18 +23,3 @@ myFile.on('line', function(line){
   tickers.push(parseLine[1]);
   console.log(tickers);
 });
-
-const MongoClient = require('mongodb').MongoClient;
-const url = "mongodb+srv://luckonar:Luckonar123@cluster0.7agxc.mongodb.net/Hw14?retryWrites=true&w=majority";
-
-MongoClient.connect(url,function(err, db){
-  if(err){return console.log(err); return;}
-  var dbo = db.db("Hw14");
-  var collection = dbo.collection('companies');
-  for(i = 1; i < companies.length; i++){
-    var newData = {"Company": companies[i], "Ticker": tickers[i]};
-      console.log("new document inserted");
-    });
-  }
-  db.close();
-});
