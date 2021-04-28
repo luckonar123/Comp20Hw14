@@ -7,19 +7,12 @@ http.createServer(function (req,res) {
     res.end();
 }).listen(port);
 
+const MongoClient = require('mongodb').MongoClient;
+const url = "mongodb+srv://luckonar:Luckonar123@cluster0.7agxc.mongodb.net/Hw14?retryWrites=true&w=majority";
 
-var readline = require('readline');
-var fs = require('fs');
-var companies = new Array;
-var tickers = new Array;
-var myFile = readline.createInterface({
-  input: fs.createReadStream('companies.csv')
-});
-myFile.on('line', function(line){
-  var parseLine = line.split(',');
-  companies.push(parseLine[0]);
-  console.log(companies);
-  console.log("->");
-  tickers.push(parseLine[1]);
-  console.log(tickers);
+MongoClient.connect(url,function(err, db){
+  if(err){return console.log(err); return;}
+  var dbo = db.db("Hw14");
+  var collection = dbo.collection('companies');
+  db.close();
 });
