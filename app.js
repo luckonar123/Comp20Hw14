@@ -8,16 +8,3 @@ http.createServer(function (req,res) {
 }).listen(port);
 
 
-var express = require('express');
-var app = express();
-app.get('/',function(req,res){
-    res.sendFile('index.html', {root : __dirname});
-})
-
-var bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-app.post('/',function(req,res){
-    var companyInput = req.body.company;
-    var tickerInput = req.body.ticker;
