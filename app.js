@@ -19,11 +19,6 @@ MongoClient.connect(url,function(err, db){
   if(err){return console.log(err); return;}
   var dbo = db.db("Hw14");
   var collection = dbo.collection('companies');
-  for(i = 1; i < companies.length; i++){
-    var newData = {"Company": companies[i], "Ticker": tickers[i]};
-    collection.insertOne(newData, function(err,res){
-      console.log("new document inserted");
-    });
-  }
+ 
   db.close();
 });
